@@ -18,6 +18,7 @@
             <th>ID</th>
             <th>Titolo</th>
             <th>Tipologia</th>
+            <th>Tecnologia</th>
             <th>Data creazione</th>
             <th>Data modifica</th>
             <th></th>
@@ -31,6 +32,13 @@
                   <a href="{{ route('projects.show',$project) }}">{{ $project->title }}</a>
                 </td>
                 <td>{{ $project->typology_id ? $project->typology->name : '-' }}</td>
+                <td>
+                  @forelse($project->technologies()->orderBy('name')->get() as $technology )
+                    <span class="badge rounded-pill text-bg-light">{{ $technology->name }}</span>
+                  @empty
+                    -
+                  @endforelse
+                </td>
                 <td>{{ $project->created_at }}</td>
                 <td>{{ $project->updated_at }}</td>
                 <td>
