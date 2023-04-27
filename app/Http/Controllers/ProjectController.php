@@ -73,8 +73,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $typologies = Typology::orderBy('name', 'asc')->get();
+        $technologies =Technology::orderBy('name')->get();
 
-        return view('projects.edit', compact('project', 'typologies'));
+        return view('projects.edit', compact('project', 'typologies', 'technologies'));
     }
 
     /**
@@ -91,6 +92,13 @@ class ProjectController extends Controller
         $data['slug'] = Str::slug($data['title']);
 
         $project->update($data);
+
+        if (isset($data['technologies'])) {
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->sync([]);
+        }
+
 
         return to_route('projects.show', $project);
     }

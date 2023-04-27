@@ -32,7 +32,7 @@
               @enderror
             </div>
             <div class="mb-3">
-              <label for="technologies" class="form-label">Technology</label>
+              <label for="technologies" class="form-label">Technologie</label>
               <div class="d-flex @error('technologies') is-invalid @enderror flex-wrap gap-3">
 
                 @foreach($technologies as $key => $technology)
