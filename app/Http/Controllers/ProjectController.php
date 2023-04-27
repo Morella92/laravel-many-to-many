@@ -50,6 +50,11 @@ class ProjectController extends Controller
 
         $project = Project::create($data);
 
+        if (isset($data['technologies'])) {
+            $project->technologies()->attach($data['technologies']);
+        }
+
+
         return to_route('projects.show', $project);
     }
 
