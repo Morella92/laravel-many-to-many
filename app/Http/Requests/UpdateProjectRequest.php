@@ -32,7 +32,8 @@ class UpdateProjectRequest extends FormRequest
             'client' => 'nullable|string',
             'content'=> 'nullable|string',
             'url' => 'nullable|string',
-            'typology_id' => 'nullable|exists:typologies,id'
+            'typology_id' => 'nullable|exists:typologies,id',
+            'technologies'=> 'exists:technologies,id'
         ];
     }
 }

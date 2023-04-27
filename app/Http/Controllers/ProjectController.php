@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Typology;
+use App\Models\Technology;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Str;
@@ -30,8 +31,9 @@ class ProjectController extends Controller
     public function create()
     {
         $typologies = Typology::orderBy('name', 'asc')->get();
+        $technologies =Technology::orderBy('name')->get();
 
-        return view('projects.create', compact('typologies'));
+        return view('projects.create', compact('typologies', 'technologies'));
     }
 
     /**

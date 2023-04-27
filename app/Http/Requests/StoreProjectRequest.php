@@ -29,6 +29,7 @@ class StoreProjectRequest extends FormRequest
             'client' => 'required|max:255',
             'url' => 'nullable|url|max:255',
             'typology_id' => 'nullable|exists:typologies,id',
+            'technologies'=> 'exists:technologies,id'
         ];
     }
 }
